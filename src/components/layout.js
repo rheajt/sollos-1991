@@ -1,12 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import GlobalStyles from './GlobalStyles';
-// import sollos from '../images/sollos2.png';
-// import on1991 from '../images/1991-2.png';
-// import baxter from '../images/baxter-wilson.png';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
+import { Link } from 'gatsby';
+
+const colors = ['#fa00e5', '#003efa', '#fac000', '#ff0000'];
+
+const ImageLink = ({ to, fixed, color }) => (
+  <Link to={to}>
+    <Img
+      fixed={fixed}
+      style={{ overflow: 0 }}
+      imgStyle={{ filter: `drop-shadow(1px 1px 20px ${colors[color]})` }}
+    />
+  </Link>
+);
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -21,32 +31,48 @@ const Layout = ({ children }) => {
 
       sollos: file(relativePath: { eq: "sollos.png" }) {
         childImageSharp {
-          fluid(quality: 90, maxWidth: 600) {
-            ...GatsbyImageSharpFluid
+          fixed(quality: 90, width: 600) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
 
       year: file(relativePath: { eq: "1991-2.png" }) {
         childImageSharp {
-          fluid(quality: 90, maxWidth: 400) {
-            ...GatsbyImageSharpFluid
+          fixed(quality: 90, width: 200) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
 
-      # moon: file(relativePath: { eq: "moon2.png" }) {
-      #   childImageSharp {
-      #     fluid(maxWidth: 300, quality: 100) {
-      #       ...GatsbyImageSharpFluid
-      #     }
-      #   }
-      # }
-
       baxter: file(relativePath: { eq: "baxter-wilson.png" }) {
         childImageSharp {
-          fluid(quality: 90, maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+          fixed(quality: 90, height: 400) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      jessica: file(relativePath: { eq: "jessica-stclair.png" }) {
+        childImageSharp {
+          fixed(quality: 90, height: 400) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      matt: file(relativePath: { eq: "matt-kingsbury.png" }) {
+        childImageSharp {
+          fixed(quality: 90, height: 400) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      morgan: file(relativePath: { eq: "morgan-blair.png" }) {
+        childImageSharp {
+          fixed(quality: 90, height: 400) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -57,20 +83,37 @@ const Layout = ({ children }) => {
     <BackgroundImage Tag="div" fluid={data.starField.childImageSharp.fluid}>
       <GlobalStyles />
 
-      <Header>
-        <Img fluid={data.sollos.childImageSharp.fluid} />
-        <Img fluid={data.year.childImageSharp.fluid} className="in-1991" />
-        {/* <img src={data.moon.childImageSharp.fluid.base64} className="moon" /> */}
-      </Header>
+      <Main>
+        <Header>
+          <Img fixed={data.sollos.childImageSharp.fixed} />
+          <Img fixed={data.year.childImageSharp.fixed} className="in-1991" />
+        </Header>
 
-      {children}
+        <Footer>
+          <ImageLink
+            to="/baxter"
+            fixed={data.baxter.childImageSharp.fixed}
+            color={0}
+          />
+          <ImageLink
+            to="/jessica"
+            fixed={data.jessica.childImageSharp.fixed}
+            color={1}
+          />
+          <ImageLink
+            to="/matt"
+            fixed={data.matt.childImageSharp.fixed}
+            color={2}
+          />
+          <ImageLink
+            to="/morgan"
+            fixed={data.morgan.childImageSharp.fixed}
+            color={3}
+          />
+        </Footer>
 
-      <Footer>
-        <Img
-          fluid={data.baxter.childImageSharp.fluid}
-          style={{ overflow: 0 }}
-        />
-      </Footer>
+        {children}
+      </Main>
     </BackgroundImage>
   );
 };
@@ -85,42 +128,36 @@ const StyledLayout = styled(Layout)`
   margin: 0;
 `;
 
+const Main = styled.main`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 'header' 'footer';
+`;
+
 const Header = styled.header`
-  width: 600px;
-  margin: 0 auto;
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   position: relative;
-
-  img {
-    width: 100%;
-  }
-
-  .in-1991 {
-    margin: 0 auto;
-    width: 200px;
-  }
-
-  .moon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-  }
 `;
 
 const Footer = styled.footer`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1rem;
+  grid-area: footer;
+  /* height: 100%; */
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
   img {
-    height: auto;
-    width: 100%;
-    align-self: flex-end;
-    transition: transform 300ms ease-in;
-    filter: drop-shadow(4px 6px 30px pink);
+    height: 100%;
+    width: auto;
+    transition: transform 200ms ease-in;
     &:hover {
+      transform: scale(1.01);
       cursor: pointer;
-      transform: scale(1.03);
     }
   }
 `;

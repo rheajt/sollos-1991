@@ -1,0 +1,18 @@
+{
+  "baxter": {
+    "url": "https://docs.google.com/document/d/1ln09q9nyD9QRiU_z_PS3ma7PQC1SGc1_c9znkkpujyQ",
+    "embed": "https://docs.google.com/document/d/e/2PACX-1vR1XLNhKm3eEsZZ09OfP3HvJTDF6nLdVfNtOaTLcUX8bq98mJwZ5xdUSdDSSLZOlaDsnSjNRwJFiu8w/pub?embedded=true"
+  },
+  "jessica": {
+    "url": "https://docs.google.com/document/d/1NFQbQkJvsEcaKt5qvhe1Y56tmuGD7oY2FmRD0hKNcjM",
+    "embed": "https://docs.google.com/document/d/e/2PACX-1vR5Rw6hGo1VaIfynpBaNPBaWvhFob0Agox2f_8LY_Cz0uaL0lkdA7esQ1D-7CLGaZD8_SntcKs-JqtM/pub?embedded=true"
+  },
+  "matt": {
+    "url": "https://docs.google.com/document/d/12Z1H6Cwykqj0fwvlmGP68asfeJEdTTZdXSwNA3EzZW4",
+    "embed": "https://docs.google.com/document/d/e/2PACX-1vQPsPE1piBHBzZkoz6ZU5E4KITcyg17grYBLBK3JaB-z654Vgw2FUwaNTHhBOeh4IYB5qXIYGPW1AyP/pub?embedded=true"
+  },
+  "morgan": {
+    "url": "https://docs.google.com/document/d/1FiiKvbkFIMlEvQQlmYk4u44fPhIiUZiFSwW_JE9J0uE",
+    "embed": "https://docs.google.com/document/d/e/2PACX-1vTap-aThpl0MVbU85RSBr--e3lfNj1_Q6O2ErVjEhlt8TV5C014xGpYDFppfbU6aq3X7SIh9pTN65fL/pub?embedded=true"
+  }
+}
