@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{255:function(n,a,e){"use strict";e.r(a);var t=e(0),r=e.n(t),c=e(247),o=e(248),u=e(249);a.default=function(){return r.a.createElement(c.a,null,r.a.createElement(o.a,{data:u.morgan}))}}}]);
+//# sourceMappingURL=component---src-pages-morgan-jsx-9903276d2da1fbfe6d38.js.map

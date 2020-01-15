@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{251:function(e,a,n){"use strict";n.r(a);var t=n(0),r=n.n(t),c=n(247),u=n(248),o=n(249);a.default=function(){return r.a.createElement(c.a,null,r.a.createElement(u.a,{data:o.baxter}))}}}]);
+//# sourceMappingURL=component---src-pages-baxter-jsx-86ec298086745b8ae2f0.js.map
