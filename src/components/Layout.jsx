@@ -1,22 +1,10 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import GlobalStyles from './GlobalStyles';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import BackgroundImage from 'gatsby-background-image';
-import { Link } from 'gatsby';
-
-const colors = ['#fa00e5', '#003efa', '#fac000', '#ff0000'];
-
-const ImageLink = ({ to, fixed, color }) => (
-  <Link to={to}>
-    <Img
-      fixed={fixed}
-      style={{ overflow: 0 }}
-      imgStyle={{ filter: `drop-shadow(1px 1px 20px ${colors[color]})` }}
-    />
-  </Link>
-);
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -81,6 +69,7 @@ const Layout = ({ children }) => {
 
   return (
     <BackgroundImage Tag="div" fluid={data.starField.childImageSharp.fluid}>
+      <Helmet title="Sollos 1991" />
       <GlobalStyles />
 
       <Main>
@@ -88,30 +77,6 @@ const Layout = ({ children }) => {
           <Img fixed={data.sollos.childImageSharp.fixed} />
           <Img fixed={data.year.childImageSharp.fixed} className="in-1991" />
         </Header>
-
-        <Footer>
-          <ImageLink
-            to="/baxter"
-            fixed={data.baxter.childImageSharp.fixed}
-            color={0}
-          />
-          <ImageLink
-            to="/jessica"
-            fixed={data.jessica.childImageSharp.fixed}
-            color={1}
-          />
-          <ImageLink
-            to="/matt"
-            fixed={data.matt.childImageSharp.fixed}
-            color={2}
-          />
-          <ImageLink
-            to="/morgan"
-            fixed={data.morgan.childImageSharp.fixed}
-            color={3}
-          />
-        </Footer>
-
         {children}
       </Main>
     </BackgroundImage>
@@ -142,24 +107,6 @@ const Header = styled.header`
   align-items: center;
   text-align: center;
   position: relative;
-`;
-
-const Footer = styled.footer`
-  grid-area: footer;
-  /* height: 100%; */
-  overflow: hidden;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-end;
-  img {
-    height: 100%;
-    width: auto;
-    transition: transform 200ms ease-in;
-    &:hover {
-      transform: scale(1.01);
-      cursor: pointer;
-    }
-  }
 `;
 
 export default StyledLayout;

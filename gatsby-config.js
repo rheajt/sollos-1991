@@ -4,6 +4,7 @@ module.exports = {
     description: `kids on bikes group`,
     author: `@rheajt`,
   },
+  pathPrefix: '/sollos-1991',
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
@@ -32,4 +33,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

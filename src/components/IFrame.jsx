@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
-import { FaCaretLeft, FaFile } from 'react-icons/fa';
 
 const slideUp = keyframes`
   from {
@@ -15,31 +13,22 @@ const slideUp = keyframes`
   }
 `;
 
-const IFrame = ({ data }) => {
+const IFrame = ({ children, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   function loaded() {
+    console.log('boom');
     setIsLoaded(true);
   }
 
   return (
     <>
       <IFrameWrapper className={isLoaded ? `loaded` : ''}>
-        <iframe
-          title="character-iframe"
-          src={data.embed}
-          onLoad={loaded}
-        ></iframe>
-        <div className="controls">
-          <Link to="/">
-            <FaCaretLeft />
-          </Link>
-          <a href={data.url + '/edit'}>
-            <FaFile />
-          </a>
-        </div>
+        <iframe title="character-iframe" {...props} onLoad={loaded}>
+          {children}
+        </iframe>
       </IFrameWrapper>
-      {/* <Loading className={isLoaded ? 'done' : ''} /> */}
+      <Loading className={isLoaded ? 'done' : ''} />
     </>
   );
 };
@@ -90,7 +79,7 @@ const Loading = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: radial-gradient(white, black);
+  /* background-image: radial-gradient(white, black); */
 
   &.done {
     display: none;
